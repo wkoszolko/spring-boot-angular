@@ -12,20 +12,59 @@
         There are no measurements yet.
       </div>
       <div>
-        <form>
-          <div class="form-group">
+        <form name="rrForm">
+          <div class="form-group" ng-class="{ 'has-error': rrForm.systolic.$touched && rrForm.systolic.$invalid }">
             <label for="inputSystolic">Systolic (mm Hg)</label>
-            <input type="number" ng-model="newRR.systolic" class="form-control" id="inputSystolic" placeholder="Systolic e.g 125">
+            <input type="number"
+                   ng-model="newRR.systolic"
+                   class="form-control"
+                   name="systolic"
+                   id="inputSystolic"
+                   placeholder="Systolic e.g 125"
+                   min="0"
+                   max="300"
+                   required>
+              <div class="help-block" ng-messages="rrForm.systolic.$error" ng-if="rrForm.systolic.$touched">
+                  <p ng-message="min">Systolic should be greater than 0 mm Hg</p>
+                  <p ng-message="max">Systolic should be less than 300 mm Hg</p>
+                  <p ng-message="required">This field is required.</p>
+              </div>
           </div>
-          <div class="form-group">
+          <div class="form-group" ng-class="{ 'has-error': rrForm.diastolic.$touched && rrForm.diastolic.$invalid }">
             <label for="inputDiastolic">Diastolic (mm Hg)</label>
-            <input type="number" ng-model="newRR.diastolic" class="form-control" id="inputDiastolic" placeholder="Diastolic e.g 80">
+            <input type="number"
+                   ng-model="newRR.diastolic"
+                   class="form-control"
+                   name="diastolic"
+                   id="inputDiastolic"
+                   placeholder="Diastolic e.g 80"
+                   min="0"
+                   max="300"
+                   required>
+              <div class="help-block" ng-messages="rrForm.diastolic.$error" ng-if="rrForm.diastolic.$touched">
+                  <p ng-message="min">Diastolic should be greater than 0 mm Hg</p>
+                  <p ng-message="max">Diastolic should be less than 300 mm Hg</p>
+                  <p ng-message="required">This field is required.</p>
+              </div>
           </div>
-          <div class="form-group">
+          <div class="form-group" ng-class="{ 'has-error': rrForm.hr.$touched && rrForm.hr.$invalid }">
             <label for="inputHr">Heart rate (beats per minute)</label>
-            <input type="number" ng-model="newRR.hr" class="form-control" id="inputHr" placeholder="Heart rate e.g 70">
+            <input type="number"
+                   ng-model="newRR.hr"
+                   class="form-control"
+                   name="hr"
+                   id="inputHr"
+                   placeholder="Heart rate e.g 70"
+                   min="0"
+                   max="250"
+                   required>
+              <div class="help-block" ng-messages="rrForm.hr.$error" ng-if="rrForm.hr.$touched">
+                  <p ng-message="min">Heart rate should be greater than 0 beats per minute</p>
+                  <p ng-message="max">Heart rate should be less than 250 beats per minute</p>
+                  <p ng-message="required">This field is required.</p>
+              </div>
           </div>
-          <button type="submit" ng-click="save(newRR)" class="btn btn-default">Submit</button>
+          <button type="submit" ng-disabled="rrForm.$invalid" ng-click="save(newRR)" class="btn btn-primary">Submit</button>
         </form>
       </div>
       <div ng-hide="!(rrs && rrs.length > 0)">
@@ -48,6 +87,7 @@
       </div>
     </div>
     <script type="text/javascript" src="./bower_components/angular/angular.min.js"></script>
+    <script type="text/javascript" src="./bower_components/angular-messages/angular-messages.min.js"></script>
     <script type="text/javascript" src="./bower_components/angular-resource/angular-resource.min.js"></script>
     <script type="text/javascript" src="./bower_components/angular-spring-data-rest/dist/angular-spring-data-rest.min.js"></script>
     <script type="text/javascript" src="./bower_components/underscore/underscore-min.js"></script>
