@@ -4,6 +4,21 @@
             $scope.rrs = response ? response : [];
         });
 
+        $scope.save = function(newRR) {
+            new RR({
+                systolic: newRR.systolic,
+                diastolic: newRR.diastolic,
+                hr: newRR.hr,
+                date: null
+            }).save(function(rr) {
+                    $scope.rrs.push(rr);
+                    newRR = {
+                        systolic: null,
+                        diastolic: null,
+                        hr: null
+                    };
+            });
+        }
     };
 
     AppController.$inject = ['$scope', 'RR'];

@@ -11,6 +11,23 @@
       <div class="alert alert-info" role="alert" ng-hide="rrs && rrs.length > 0">
         There are no measurements yet.
       </div>
+      <div>
+        <form>
+          <div class="form-group">
+            <label for="inputSystolic">Systolic (mm Hg)</label>
+            <input type="number" ng-model="newRR.systolic" class="form-control" id="inputSystolic" placeholder="Systolic e.g 125">
+          </div>
+          <div class="form-group">
+            <label for="inputDiastolic">Diastolic (mm Hg)</label>
+            <input type="number" ng-model="newRR.diastolic" class="form-control" id="inputDiastolic" placeholder="Diastolic e.g 80">
+          </div>
+          <div class="form-group">
+            <label for="inputHr">Heart rate (beats per minute)</label>
+            <input type="number" ng-model="newRR.hr" class="form-control" id="inputHr" placeholder="Heart rate e.g 70">
+          </div>
+          <button type="submit" ng-click="save(newRR)" class="btn btn-default">Submit</button>
+        </form>
+      </div>
       <div ng-hide="!(rrs && rrs.length > 0)">
         <table class="table table-hover">
           <thead>

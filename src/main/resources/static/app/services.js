@@ -24,8 +24,8 @@
                 rr.save = function(callback) {
                     RR.resources.save(rr, function(item, headers) {
                         var deferred = $http.get(headers().location);
-                        return SpringDataRestAdapter.process(deferred).then(function(newItem) {
-                            callback && callback(new RR(newItem));
+                        return SpringDataRestAdapter.process(deferred).then(function(newRR) {
+                            callback && callback(new RR(newRR));
                         });
                     });
                 };
