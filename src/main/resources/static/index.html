@@ -74,6 +74,7 @@
               <th>Heart rate</th>
               <th>Systolic</th>
               <th>Diastolic</th>
+              <th>Date</th>
             </tr>
           </thead>
           <tbody>
@@ -81,6 +82,7 @@
               <td>{{ rr.hr }}</td>
               <td>{{ rr.systolic }}</td>
               <td>{{ rr.diastolic }}</td>
+              <td>{{ rr.date | date }}</td>
             </tr>
           </tbody>
         </table>
