@@ -1,0 +1,14 @@
+{
+  "name": "rr-store-frontend",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/wkoszolko/spring-boot-angular-rr.git"
+  },
+  "dependencies": {
+    "bower": "~1.6.5"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  }
+}
