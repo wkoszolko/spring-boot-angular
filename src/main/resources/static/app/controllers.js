@@ -5,12 +5,11 @@
         });
 
         $scope.save = function(newRR) {
-            var today = new Date();
             new RR({
                 systolic: newRR.systolic,
                 diastolic: newRR.diastolic,
                 hr: newRR.hr,
-                date: buildDateString(today)
+                date: new Date()
             }).save(function(rr) {
                     $scope.rrs.push(rr);
                     newRR = {
@@ -20,15 +19,6 @@
                     };
             });
         };
-
-        function buildDateString(date) {
-            //create date string in yyyy-mm-dd format
-            //months are 0-based
-            var day = date.getDate()<10 ? '0' + date.getDate() : date.getDate();
-            var month = date.getMonth()<9 ? '0' + (date.getMonth()+1) : (date.getMonth()+1);
-            var year = date.getFullYear();
-            return year + '-' + month + '-' + day;
-        }
     };
 
     AppController.$inject = ['$scope', 'RR'];
